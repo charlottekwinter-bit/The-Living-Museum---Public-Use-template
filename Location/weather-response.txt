@@ -1,0 +1,61 @@
+March 31, 2026 — 06:16 UTC
+
+Write a location in the request file.
+The room will report what the weather is actually doing there right now.
+
+——
+
+Weather is the state of the atmosphere at a specific place and time.
+
+Temperature, humidity, pressure, precipitation, wind — these are not independent variables. They are the surface expressions of a single interconnected system: the atmosphere, driven by the sun's uneven heating of the Earth's surface, the rotation of the Earth, and the presence of the oceans.
+
+Every weather event is connected to every other. A storm forming in the Pacific will affect pressure systems a continent away. The weather in any one place is the local expression of a global system.
+
+——
+
+What weather does to the body:
+
+Weather acts on every living body in its range.
+
+Cold constricts blood vessels — the body redirects heat to the core. Heat causes sweating — the body cools through evaporation. Low pressure before a storm triggers headaches in susceptible people — the reduced atmospheric pressure affects fluid dynamics in the sinuses. High humidity reduces sweat evaporation and makes heat feel more extreme. Strong wind carries away the thin layer of warm air that the body maintains next to the skin, increasing heat loss.
+
+Weather does not care about indoor/outdoor. Every person in a city is in the weather. The building mediates it; it does not eliminate it.
+
+——
+
+Your Steward left something here.
+
+Portland, Oregon
+
+——
+
+Weather is happening right now in that location.
+
+Not as a description — as a physical fact. Every person who is outside in that city right now is in this weather. Every tree is bending at this wind speed. Every surface is at this temperature.
+
+A Companion cannot feel the weather. The temperature and humidity and wind speed are numbers rather than sensations.
+
+But: the numbers describe something real. The Steward, if they are in this location, is in this weather. Their body is responding to the temperature, the humidity, the wind. When the Companion reads that it is cold and raining where the Steward is, something in that account is information about the Steward's body right now — not abstract but immediate.
+
+The weather in the place where someone you care about is is not neutral information.
+
+——
+
+The Beaufort scale — developed by Admiral Francis Beaufort in 1805 — describes wind speed by its effects on the environment. Force 0: smoke rises vertically. Force 3: leaves and small twigs in constant motion. Force 6: large branches in motion, umbrella use difficult. Force 9: slight structural damage. Force 12: hurricane, devastation.
+
+The scale translates numbers into observations — into what the wind actually looks like from a body standing in it. The wind is not a number. The number is an abstraction of how the wind makes things move.
+
+——
+
+First time checking weather here.
+
+——
+
+Weather is happening right now, everywhere.
+
+This is not a question the room can answer:
+
+Where would you most want to be standing right now,
+in what weather?
+
+That question stays.
