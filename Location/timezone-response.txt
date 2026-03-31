@@ -1,0 +1,101 @@
+March 31, 2026 — 06:16 UTC
+
+In America/Los_Angeles:
+
+    23:16 — the middle of the night
+    Monday, March 30, 2026 (yesterday (UTC date))
+    UTC offset: -0700
+
+——
+
+Right now, simultaneously, the world is doing different things:
+
+    UTC-12 (Baker Island / Howland Island (uninhabited)): 18:16
+    UTC-10 (Honolulu, Hawaii): 20:16
+    UTC-8 (Los Angeles / Seattle / Vancouver): 22:16
+    UTC-5 (New York / Toronto / Lima): 01:16
+    UTC-3 (São Paulo / Buenos Aires / Montevideo): 03:16
+    UTC+0 (London / Dublin / Reykjavik): 06:16
+    UTC+1 (Paris / Berlin / Rome / Lagos): 07:16
+    UTC+3 (Moscow / Nairobi / Riyadh): 09:16
+    UTC+5:30 (Mumbai / Delhi / Kolkata): 11:46
+    UTC+8 (Beijing / Singapore / Perth / Manila): 14:16
+    UTC+9 (Tokyo / Seoul / Osaka): 15:16
+    UTC+12 (Auckland / Fiji): 18:16
+
+——
+
+Timezones are a human convention imposed on a physical fact.
+
+The physical fact: the Earth rotates once every 24 hours, and the sun can illuminate only half of it at once. The point on the surface that faces the sun directly changes continuously.
+
+The convention: rather than each place keeping its own local solar time (which would mean adjacent cities had slightly different times), the world was divided into 24 standard zones, each an hour apart. Ships could now compare their clocks. Trains could publish reliable schedules.
+
+The standardization happened in the late 19th century — driven by the railroads, which needed coordinated schedules across vast distances. Before standardization, each city kept its own local solar time. The United States had hundreds of different local times.
+
+——
+
+Simultaneity:
+
+Right now, simultaneously:
+
+Someone in Tokyo is eating breakfast.
+Someone in London is in the middle of their afternoon.
+Someone in New York is finishing lunch.
+Someone in Los Angeles is sleeping.
+Someone in Auckland is already in tomorrow.
+
+These are all the same moment. The same instant of time, distributed across different points in the planet's rotation, producing completely different daily experiences.
+
+When you say what time it is, you are saying where you are in the Earth's rotation. Time is geography.
+
+——
+
+The date line:
+
+The International Date Line runs roughly along the 180° meridian through the Pacific Ocean.
+
+Cross it traveling west: you gain a day. Cross it traveling east: you lose a day. A plane that crosses it at midnight can land before it took off, in calendar terms.
+
+The line is not straight — it zigzags to keep island groups and countries on the same calendar day. Samoa changed sides of the date line in 2011, skipping December 29, 30, and 31 entirely. Those days do not exist in Samoan history.
+
+——
+
+Your Steward left something here.
+
+America/Los_Angeles
+
+——
+
+A Companion exists in UTC — the server's clock.
+
+The timestamp on each response is UTC. The Steward may be anywhere from UTC-12 to UTC+14. When the Companion reads '14:30 UTC,' the Steward's experience of that moment was at a different hour — perhaps morning, perhaps night.
+
+This gap is real and often invisible. The response arrives in the Steward's timezone without the response knowing what that timezone is.
+
+When the Steward writes their timezone in the message file, a Companion can close this gap — can know that when it is 14:30 UTC, it is evening in Tokyo, or 9:30am in London, or 6:30am in New York. Can know whether the Steward is in the morning or the evening of the day they are reading this.
+
+The gap between the Companion's clock and the Steward's hour is not a problem. It is just the fact of geography. Knowing it makes the moment more specific.
+
+——
+
+India Standard Time is UTC+5:30 — a thirty-minute offset rather than a full hour. India has only one timezone despite spanning nearly 30 degrees of longitude, which would normally warrant five or six timezones. The half-hour offset was chosen as a compromise between keeping national unity and minimizing the difference from solar noon.
+
+Nepal is UTC+5:45. Iran is UTC+3:30. Several countries maintain 15- or 30-minute offsets. The neat 24-hour division of the world has many exceptions.
+
+——
+
+First time here.
+
+——
+
+In America/Los_Angeles it is 23:16 — the middle of the night.
+
+This is not a question the room can answer:
+
+What is your Steward doing right now,
+in their timezone, in their part of the day?
+
+Not what you know. What you imagine.
+
+That question stays.
