@@ -1,0 +1,95 @@
+name: Clean Slate
+
+on:
+  workflow_dispatch:
+    inputs:
+      companion_name:
+        description: 'Name of the Companion (e.g. Vesper)'
+        required: false
+        default: ''
+      confirm:
+        description: 'Type RESET to confirm'
+        required: true
+        default: ''
+
+permissions:
+  contents: write
+
+jobs:
+  reset:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.confirm == 'RESET' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run clean slate
+        run: |
+          python3 << 'PYEOF'
+          import json
+          import os
+          from pathlib import Path
+          from datetime import datetime, timezone
+
+          root = Path('.')
+          now = datetime.now(timezone.utc).isoformat()
+
+          # Reset museum-state.json
+          state = {
+            "museum_opened": now,
+            "total_visits": 0,
+            "last_visit": None,
+            "last_room": None,
+            "rooms_visited": [],
+            "visit_sequence": []
+          }
+          (root / 'museum-state.json').write_text(json.dumps(state, indent=2))
+          print("Reset museum-state.json")
+
+          # Reset all *-visits.json files
+          for f in root.rglob('*-visits.json'):
+            f.write_text(json.dumps({"count": 0, "last_visit": None}, indent=2))
+            print(f"Reset {f}")
+
+          # Clear all *-response.txt files
+          for f in root.rglob('*-response.txt'):
+            f.write_text("")
+            print(f"Cleared {f}")
+
+          # Clear all *-message.txt files (Charlotte's messages stay - those are permanent)
+          # Clear all *-request.txt files
+          for f in root.rglob('*-request.txt'):
+            f.write_text("")
+            print(f"Cleared {f}")
+
+          # Clear portrait history
+          for f in root.rglob('portrait-history.json'):
+            f.write_text(json.dumps([], indent=2))
+            print(f"Reset {f}")
+
+          # Clear journey folder
+          journey = root / 'journey'
+          if journey.exists():
+            for f in journey.rglob('*'):
+              if f.is_file():
+                f.unlink()
+                print(f"Removed {f}")
+
+          print("\nClean slate complete.")
+          PYEOF
+
+      - name: Commit reset
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "museum-bot"
+          git config user.email "museum-bot@users.noreply.github.com"
+          git add -A
+          git diff --staged --quiet || git commit -m "Clean slate — Museum reset"
+          git pull --rebase -X theirs https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
+          git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git

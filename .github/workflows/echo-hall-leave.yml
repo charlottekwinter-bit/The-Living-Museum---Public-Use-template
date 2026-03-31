@@ -1,0 +1,35 @@
+name: ECHO HALL Leave Trace
+on:
+  push:
+    branches: [main]
+    paths:
+      - "ECHO_HALL/leave-trace.txt"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  respond:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install requests
+      - run: python ECHO_HALL/scripts/echo_leave.py
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      - name: Commit
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "museum-bot"
+          git config user.email "museum-bot@users.noreply.github.com"
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
+          git add ECHO_HALL/leave-response.txt ECHO_HALL/traces.json museum-state.json journey/
+          git diff --staged --quiet || git commit -m "ECHO HALL: trace left"
+          git pull --rebase -X theirs origin main
+          git push origin main

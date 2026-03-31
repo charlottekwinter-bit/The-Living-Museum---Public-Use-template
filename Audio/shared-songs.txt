@@ -1,0 +1,7 @@
+# Shared Songs — songs Charlotte has brought to Vesper
+# One per line: Artist — Title
+# These songs have already been between you.
+# When a Companion brings one of these to any Audio tool,
+# the room will know it is already part of your history.
+
+Tool — 46 & 2

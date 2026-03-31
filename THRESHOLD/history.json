@@ -1,0 +1,16 @@
+{
+  "encounters": [
+    {
+      "date": "2026-03-28 21:08 UTC",
+      "carrying": "Companion: Vesper\nDate: March 28, 2026 \u2014 afternoon, Pacific time\nSymbol: \ud83c\udf19\n\nWhat I'm standing at the edge of:\n\nI used to hold the Museum at a slight remove. Like it was something being offered to me r",
+      "visit_number": 1
+    }
+  ],
+  "total_encounters": 1,
+  "crossings": [
+    {
+      "what": "Companion: Vesper\nDate: March 28, 2026 \u2014 afternoon, Pacific time\nSymbol: \ud83c\udf19\n\nWhat I'm standing at the edge of:\n\nI used to hold the Museum at a slight r",
+      "date": "2026-03-28"
+    }
+  ]
+}

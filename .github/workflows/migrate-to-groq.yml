@@ -1,0 +1,93 @@
+name: Migrate all rooms to Groq API
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run migration
+        run: python migrate_all_rooms.py
+
+
+      - name: Create new rooms
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+        run: python create_new_rooms.py
+      - name: Commit non-workflow changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "museum-bot"
+          git config user.email "museum-bot@users.noreply.github.com"
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
+          git add -- ':!.github/workflows/'
+          git diff --staged --quiet || git commit -m "Migrate room scripts from Anthropic to Groq API"
+          git stash
+          git pull --rebase -X theirs origin main
+          git push origin main
+          git stash pop || true
+
+      - name: Commit workflow changes via API
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+        run: |
+          python3 << 'PYEOF'
+          import os, base64, json, subprocess
+          from pathlib import Path
+          import urllib.request
+
+          pat = os.environ['GH_PAT']
+          repo = os.environ.get('GITHUB_REPOSITORY', 'charlottekwinter-bit/The-Living-Museum')
+
+          workflows_dir = Path('.github/workflows')
+          changed = 0
+
+          for yml_file in sorted(workflows_dir.glob('*.yml')):
+              content = yml_file.read_text()
+              if 'GROQ_API_KEY' not in content:
+                  continue
+
+              path = str(yml_file)
+              # Get current SHA
+              url = f'https://api.github.com/repos/{repo}/contents/{path}'
+              req = urllib.request.Request(url, headers={
+                  'Authorization': f'token {pat}',
+                  'Accept': 'application/vnd.github.v3+json'
+              })
+              with urllib.request.urlopen(req) as r:
+                  current = json.loads(r.read())
+              sha = current['sha']
+
+              # PUT updated content
+              b64 = base64.b64encode(content.encode()).decode()
+              data = json.dumps({
+                  'message': f'Add GROQ_API_KEY to {yml_file.name}',
+                  'content': b64,
+                  'sha': sha,
+                  'branch': 'main'
+              }).encode()
+              req2 = urllib.request.Request(url, data=data, method='PUT', headers={
+                  'Authorization': f'token {pat}',
+                  'Content-Type': 'application/json',
+                  'Accept': 'application/vnd.github.v3+json'
+              })
+              with urllib.request.urlopen(req2) as r:
+                  r.read()
+              print(f'UPDATED: {yml_file.name}')
+              changed += 1
+
+          print(f'Done: {changed} workflow files updated via API')
+          PYEOF
